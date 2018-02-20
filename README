@@ -1,8 +1,10 @@
-This is the starter code for the Anagrams workshop. 
-This workshop is part of the Applied CS with Android course:
 
-http://g.co/cswithandroid
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once. Here the original word or phrase is known as the subject of the Anagram. Any word or phrase that exactly reproduces the letters in another order is an Anagram.
+In this Anagram application the user is supposed to give all possible Anagrams of given word but with a little twist.
+The mechanics of the game are as follows:
 
-Check the website for detailed instructions on how to implement this activity.
+-The game provides the user with a word from the dictionary.
+-The user tries to create as many words as possible that contain all the letters of the given word plus one additional letter. Note that     adding the extra letter at the beginning or the end without reordering the other letters is not valid. For example, if the game picks     the word 'ore' as a starter, the user might guess 'rose' or 'zero' but not 'sore'.
+-The user can give up and see the words that they did not guess.
 
-Version 1.0
+Enjoy this game
