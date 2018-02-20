@@ -35,6 +35,7 @@ public class AnagramDictionary {
     HashSet<String> wordset = new HashSet<String>();
     HashMap<String, ArrayList<String>> lettersToWord = new HashMap<>();
     HashMap<Integer,ArrayList<String>> sizeToWords=new HashMap<>();
+    ArrayList<String> anagram;
         int wordlength=DEFAULT_WORD_LENGTH;
     String word;
 
@@ -80,7 +81,6 @@ public class AnagramDictionary {
         }
 
 
-
     }
 
     public boolean isGoodWord(String word, String base) {
@@ -94,32 +94,8 @@ public class AnagramDictionary {
             return false;
 
         }
-
-
     }
 
-  /*  public List<String> getAnagrams(String targetWord) {
-        ArrayList<String> result = new ArrayList<String>();
-        for(int i=0;i<wordlist.size();i++)
-        {
-            if(wordlist.get(i).length()==targetWord.length())
-            {
-                String sortedword=sortLetters(wordlist.get(i));
-                String sortedTargetWord=sortLetters(targetWord);
-                if(sortedTargetWord.equals(sortedword))
-                {
-                    result.add(wordlist.get(i));
-
-                }
-
-            }
-
-        }
-
-        return result;
-    }
-
-    */
     public List<String> getAnagramsWithOneMoreLetter(String word) {
         ArrayList<String> result = new ArrayList<String>();
         for(char letter='a';letter<='z';letter++)
@@ -144,30 +120,21 @@ public class AnagramDictionary {
 
     public String pickGoodStarterWord() {
 
-        Random r= new Random();
-        int i=r.nextInt(wordlist.size());
         String goodword;
+        ArrayList<String> anagram=sizeToWords.get(wordlength);
 
-        ArrayList<String> anagram;
+        Random r= new Random();
+        int i=r.nextInt(anagram.size());
 
-        for(int j=i;j<wordlist.size();j++)
-
-        {
-         if(lettersToWord.containsKey(sortLetters(wordlist.get(j))))
+        for(int j=i;j<anagram.size();j++)
          {
-                 anagram = lettersToWord.get(sortLetters(wordlist.get(j)));
                  if (anagram.size() >= MIN_NUM_ANAGRAMS) {
-                     goodword = wordlist.get(i);
-                     if(wordlength<MAX_WORD_LENGTH)
-                         wordlength++;
-
+                     goodword = anagram.get(j);
+                        if(wordlength<MAX_WORD_LENGTH)
+                            wordlength++;
                      return goodword;
                  }
              }
-         }
-
-
-
 
         return "stop";
     }
